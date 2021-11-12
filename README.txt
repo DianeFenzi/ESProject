@@ -54,3 +54,6 @@ Tecnologias Principais:
     - Fazer a página home.
    Tarefa extra:
     -Fazer a base do sistema. (Ricardo)
+
+
+Obs: Todos os desenvolvedores serão full-stack de suas respectivas tarefas.
