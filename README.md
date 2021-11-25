@@ -18,7 +18,7 @@ Tecnologias Principais:
   
  Histórias de Usuário:
   Como um usuário da Web, quero me cadastrar. (Ricardo)
-    - Criar uma Classe Usuário.
+    - Criar uma Classe Usuário. :battery:
     - Fazer uma Tela de Cadastro.
     - Fazer criptografia senha.
     - Validação email e nome do usuário.
@@ -53,7 +53,7 @@ Tecnologias Principais:
   Como um usuário da Web, quero ver informações sobre o site. (Rafael)
     - Fazer a página home.
    Tarefa extra:
-    -Fazer a base do sistema. (Ricardo)
+    -Fazer a base do sistema. (Ricardo) :white_check_mark:
 
 
 Obs: Todos os desenvolvedores serão full-stack de suas respectivas tarefas.
