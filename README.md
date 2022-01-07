@@ -24,7 +24,7 @@ Histórias de Usuário:
     - Fazer uma Tela de Cadastro.
     - Fazer criptografia senha. 
     - Validação email e nome do usuário.
-- Como um usuário da Web, quero fazer o login. (Ricardo) Fazendo.
+- Como um usuário da Web, quero fazer o login. (Ricardo) OK.
     - Fazer uma Tela de Login.
     - Verificar o Email e Senha.
     - Deixar o Usuário Logado.

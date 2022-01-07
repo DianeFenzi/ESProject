@@ -3,6 +3,7 @@ from flask import Flask, redirect, url_for, flash, current_app
 from flask_login import LoginManager, current_user
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from functools import wraps
 
 
 login_manager = LoginManager()
@@ -30,24 +31,24 @@ Migrate(app,db, compare_type = True)
 ###################### CONFIGURA LOGIN ##########################
 #################################################################
 
-# login_manager.init_app(app)
-# login_manager.login_view = "usuario.login"
-# login_manager.login_message = "Não foi possível acessar esta página ou executar esta ação. Por favor confira se o login foi feito ou se você tem a devida permissão."
+login_manager.init_app(app)
+login_manager.login_view = "principal.login"
+login_manager.login_message = "Não foi possível acessar esta página ou executar esta ação. Por favor confira se o login foi feito ou se você tem a devida permissão."
 
-# def login_required(role=["ANY"]):
-#     def wrapper(fn):
-#         @wraps(fn)
-#         def decorated_view(*args, **kwargs):
+def login_required(role=["ANY"]):
+    def wrapper(fn):
+        @wraps(fn)
+        def decorated_view(*args, **kwargs):
 
-#             if not current_user.is_authenticated:
-#                return current_app.login_manager.unauthorized()
-#             urole = current_user.urole
-#             if ((urole not in role) and (role != ["ANY"])):
-#                 flash("Você não tem permissão para acessar essa página.")
-#                 return redirect(url_for('principal.index'))
-#             return fn(*args, **kwargs)
-#         return decorated_view
-#     return wrapper
+            if not current_user.is_authenticated:
+               return current_app.login_manager.unauthorized()
+            funcao = current_user.funcao
+            if ((funcao not in role) and (role != ["ANY"])):
+                flash("Você não tem permissão para acessar essa página.")
+                return redirect(url_for('principal.index'))
+            return fn(*args, **kwargs)
+        return decorated_view
+    return wrapper
 
 #################################################################
 ########################## MODELS ###############################
