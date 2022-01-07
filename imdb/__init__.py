@@ -1,11 +1,11 @@
 # from functools import wraps
 from flask import Flask, redirect, url_for, flash, current_app
-# from flask_login import LoginManager, current_user
+from flask_login import LoginManager, current_user
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
 
-# login_manager = LoginManager()
+login_manager = LoginManager()
 
 app = Flask(__name__)
 

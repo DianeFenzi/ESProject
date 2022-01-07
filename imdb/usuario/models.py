@@ -23,17 +23,17 @@ class Usuario(db.Model, UserMixin):
    __tablename__ = 'usuario'
    id = db.Column(db.Integer, primary_key=True)
 
-   email = db.Column(db.String(80, collation = 'latin1_general_ci'), unique=True, nullable=False)
-   username = db.Column(db.String(80, collation = 'latin1_general_ci'), unique=True, nullable=False)
-   senha = db.Column(db.String(255, collation = 'latin1_general_ci'),nullable = False)
-   funcao = db.Column(db.String(50, collation = 'latin1_general_ci'), server_default="user", nullable=False) #admin ou normal
+   email = db.Column(db.String(80), unique=True, nullable=False)
+   username = db.Column(db.String(80), unique=True, nullable=False)
+   senha = db.Column(db.String(255),nullable = False)
+   funcao = db.Column(db.String(50), server_default="user", nullable=False) #admin ou normal
 
 
    def __init__(self, email, senha, username, funcao):
-      self.nome = username
+      self.username = username
       self.senha = self.bcrypt.generate_password_hash(senha).decode('utf-8')
       self.email = email
-      self.urole = funcao
+      self.funcao = funcao
 
    def checa_senha(self, senha):
       return self.bcrypt.check_password_hash(self.senha,senha)

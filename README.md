@@ -19,7 +19,7 @@ Tecnologias Principais:
   Flask
   
 Histórias de Usuário:
-- Como um usuário da Web, quero me cadastrar. (Ricardo) Fazendo.
+- Como um usuário da Web, quero me cadastrar. (Ricardo) OK.
     - Criar uma Classe Usuário. 
     - Fazer uma Tela de Cadastro.
     - Fazer criptografia senha. 
