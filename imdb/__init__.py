@@ -50,6 +50,20 @@ def login_required(role=["ANY"]):
         return decorated_view
     return wrapper
 
+def admin_required(role=["ANY"]):
+    def wrapper(fn):
+        @wraps(fn)
+        def decorated_view(*args, **kwargs):
+            if not current_user.is_authenticated:
+               return current_app.login_manager.unauthorized()
+            funcao = current_user.funcao
+            if ((funcao not in role) and (role != ["admin"])):
+                flash("Você não tem permissão para acessar essa página.")
+                return redirect(url_for('principal.index'))
+            return fn(*args, **kwargs)
+        return decorated_view
+    return wrapper
+
 #################################################################
 ########################## MODELS ###############################
 #################################################################

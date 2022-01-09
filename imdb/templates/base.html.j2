@@ -18,6 +18,18 @@
         <a href="{{url_for('usuario.perfil')}}">{{current_user.username}}</a>
       {% endif %}
     </nav>
+
+    <!-- Flashed Messages Start -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+       <ul class="flashes">
+          {% for message in messages %}
+             <li><b>{{ message }}</b></li>
+          {% endfor %}
+       </ul>
+    {% endif %}
+    {% endwith %}
+
     {% endblock %}
     <div id="content">{% block content %}{% endblock %}</div>
     <div id="footer">
