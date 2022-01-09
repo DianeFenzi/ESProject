@@ -1,32 +1,17 @@
-<!DOCTYPE html>
-<html>
-   <head>
-
-   </head>
-   <body>
-      <!-- Flashed Messages Start -->
-      {% with messages = get_flashed_messages() %}         
-      {% if messages %}
-         <ul class="flashes">
-            {% for message in messages %}
-               <li><b>{{ message }}</b></li>
-            {% endfor %}
-         </ul>
-      {% endif %}
-      {% endwith %}
-      
-      <h1>Faça o login!</h1>
-      <form action="{{url_for('principal.login')}}" method="POST">
-         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-         <div>
-            <label for="email">Email:</label>
-            <input type="email" name="email">
-         </div>
-         <div>
-            <label for="senha">Senha:</label>
-            <input type="password" name="senha">
-         </div>
-         <input type="submit">
-      </form>
-   </body>
-</html>
+{% extends "base.html.j2" %}
+{% block title%}Login{% endblock %}
+{% block content%}
+  <h1>Faça o login!</h1>
+  <form action="{{url_for('principal.login')}}" method="POST">
+     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+     <div>
+        <label for="email">Email:</label>
+        <input type="email" name="email">
+     </div>
+     <div>
+        <label for="senha">Senha:</label>
+        <input type="password" name="senha">
+     </div>
+     <input type="submit">
+  </form>
+{% endblock %}

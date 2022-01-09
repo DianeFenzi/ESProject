@@ -1,0 +1,20 @@
+{% extends "base.html.j2" %}
+{% block title %}Filmes{% endblock %}
+
+{% block content %}
+<table>
+  <tr>
+    <th>Titulo</th>
+    <th>Diretor</th>
+    <th>Avaliação</th>
+  </tr>
+  {% for filme in filmes %}
+    <tr>
+      <td>{{filme.titulo}}</td>
+      <td>{{filme.diretor}}</td>
+      <td>5</td>
+    </tr>
+  {% endfor%}
+</table>
+
+{% endblock %}

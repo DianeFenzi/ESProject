@@ -8,5 +8,7 @@ filme = Blueprint('filme', __name__, template_folder='templates')
 #####              BLUEPRINT               #####
 ################################################
 
-def list_movies():
-    Filme
+@filme.route("/filmes")
+def lista():
+    filmes = Filme.query.all()
+    return render_template("lista.html.j2", filmes=filmes)

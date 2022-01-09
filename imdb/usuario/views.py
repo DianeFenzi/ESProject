@@ -1,5 +1,5 @@
 from flask import Blueprint, request, url_for, redirect, render_template
-from imdb import db
+from imdb import db, login_required
 from imdb.usuario.models import Usuario
 
 usuario = Blueprint('usuario', __name__, template_folder='templates')
@@ -18,7 +18,7 @@ def cadastrar_usuario():
       return redirect(url_for('principal.index'))
    return render_template('cadastrar_usuario.html')
 
-
 @usuario.route("/perfil", methods=["GET"])
+@login_required()
 def perfil():
     return render_template('perfil.html.j2')
