@@ -2,10 +2,10 @@ Group Members:
 - Diane Fenzi Gonçalves (2019006574) | Git: DianeFenzi
 - Ricardo Furbino (2020420630) | Git: fubininho
 - Rafael Castro (2017014804) | Git: rcastroab
-  
+
 Escopo (Objetivo):
 - Estamos tentando fazer um sistema similar ao IMDb (Internet Move Database).
-  
+
 Funcionalidades:
   <ul>
     <li>Registro de Usuário e criação de perfil</li>
@@ -17,12 +17,12 @@ Funcionalidades:
 
 Tecnologias Principais:
   Flask
-  
+
 Histórias de Usuário:
 - Como um usuário da Web, quero me cadastrar. (Ricardo) OK.
-    - Criar uma Classe Usuário. 
+    - Criar uma Classe Usuário.
     - Fazer uma Tela de Cadastro.
-    - Fazer criptografia senha. 
+    - Fazer criptografia senha.
     - Validação email e nome do usuário.
 - Como um usuário da Web, quero fazer o login. (Ricardo) OK.
     - Fazer uma Tela de Login.
@@ -32,13 +32,13 @@ Histórias de Usuário:
     - Fazer uma tela para cadastro.
     - Verificar se é um administrador fazendo aquela ação.
     - Fazer a classe Filme.
-- Como um administrador, quero ver a listagem de todos os filmes. (Rafael)
+- Como um administrador, quero ver a listagem de todos os filmes. (Rafael) OK.
     - Tabela mostrando todos os filmes.
     - Ter acesso a botão para realizar ações de editar e excluir.
     - Ter um filtro de filmes.
 - Como um administrador, quero editar um filme. (Rafael)
     - Mostrar tela para editar com as infos do filme.
-- Como um administrador, quero deletar um filme. (Rafael)
+- Como um administrador, quero deletar um filme. (Rafael) OK.
     - Aparecer um modal para confirmar a ação.
 - Como um usuário, quero avaliar um filme. (Rafael)
     - Cadastrar a Classe de Avaliação

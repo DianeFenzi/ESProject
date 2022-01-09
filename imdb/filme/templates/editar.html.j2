@@ -1,0 +1,28 @@
+{% extends "base.html.j2" %}
+{% block title %}Adcionar Filme{% endblock %}
+
+{% block content %}
+  <h1>Adcione o filme</h1>
+  <form action="{{url_for('filme.editar', filme_id=filme.id)}}" method="POST">
+     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+     <input type="number" name="id" value="{{filme.id}}" hidden/>
+     <div>
+        <label for="titulo">Titulo:</label>
+        <input type="text" name="titulo" value="{{filme.titulo}}"/>
+     </div>
+     <div>
+        <label for="imdb_id">Id no IMDB:</label>
+        <input type="number" name="imdb_id" value="{{filme.id_imdb}}"/>
+     </div>
+     <div>
+        <label for="diretor">Diretor:</label>
+        <input type="text" name="diretor" value="{{filme.diretor}}"/>
+     </div>
+     <div>
+        <label for="atores">Elenco:</label>
+        <textarea type="text" name="atores" placeholder="Robert Downey Jr., Chris Evans">
+{% for ator in filme.atores.split(',')%}{{ator}},{%endfor%}</textarea>
+     </div>
+     <input type="submit"/>
+  </form>
+{% endblock %}

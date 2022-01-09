@@ -49,7 +49,7 @@ def login_required(role=["ANY"]):
         return decorated_view
     return wrapper
 
-def admin_required(role=["ANY"]):
+def admin_required(role=["admin"]):
     def wrapper(fn):
         @wraps(fn)
         def decorated_view(*args, **kwargs):
