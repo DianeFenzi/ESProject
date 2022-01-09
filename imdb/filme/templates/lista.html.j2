@@ -2,11 +2,22 @@
 {% block title %}Filmes{% endblock %}
 
 {% block content %}
+<form action="{{url_for('filme.lista')}}" method="POST">
+   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+   <div>
+      <label for="busca">Filtrar</label>
+      <input type="text" name="busca"/>
+   </div>
+</form>
 <table>
   <tr>
     <th>Titulo</th>
     <th>Diretor</th>
     <th>Avaliação</th>
+    {% if current_user.is_authenticated and current_user.funcao == "admin" %}
+      <th>Editar</a></th>
+      <th>Deletar</th>
+    {% endif %}
   </tr>
   {% if filmes.size == 0 %}
     <tr>

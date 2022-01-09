@@ -36,7 +36,7 @@ Histórias de Usuário:
     - Tabela mostrando todos os filmes.
     - Ter acesso a botão para realizar ações de editar e excluir.
     - Ter um filtro de filmes.
-- Como um administrador, quero editar um filme. (Rafael)
+- Como um administrador, quero editar um filme. (Rafael) OK.
     - Mostrar tela para editar com as infos do filme.
 - Como um administrador, quero deletar um filme. (Rafael) OK.
     - Aparecer um modal para confirmar a ação.
