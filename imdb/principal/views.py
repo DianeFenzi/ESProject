@@ -11,7 +11,7 @@ principal = Blueprint('principal', __name__, template_folder='templates')
 
 @principal.route("/")
 def index():
-   return "Hello World!"
+   return render_template("principal.html.j2")
 
 @principal.route("/login", methods=["GET","POST"])
 def login():
@@ -26,10 +26,10 @@ def login():
       senha = form["senha"]
 
       usuario = Usuario.query.filter_by(email=email).first()
-      
+
       if usuario:
          checaSenha = usuario.checa_senha(senha)
-         
+
          if (checaSenha):
                login_user(usuario)
                print(current_user.funcao)
@@ -41,7 +41,7 @@ def login():
          flash('Usuário inválido')
          return redirect(url_for('principal.login'))
 
-   return render_template('login.html')
+   return render_template('login.html.j2')
 
 @principal.route('/logout')
 @login_required()

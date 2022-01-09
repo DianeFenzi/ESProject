@@ -8,7 +8,7 @@ from functools import wraps
 
 login_manager = LoginManager()
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path="/static")
 
 app.config['SECRET_KEY'] = 'jaçgjfçsdajFAJSLÇJFOAofajsdfjpasfFAWIJeo40569masdmf'
 
@@ -67,7 +67,7 @@ from imdb.principal.views import principal
 from imdb.usuario.views import usuario
 from imdb.filme.views import filme
 
+
 app.register_blueprint(principal)
 app.register_blueprint(usuario, url_prefix='/usuario')
 app.register_blueprint(filme, url_prefix='/filme')
-

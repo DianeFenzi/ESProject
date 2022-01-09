@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <title>{% block title %}{% endblock %}{%block title_suffix%} - Movie Database{%endblock%}</title>
+    {% endblock %}
+  </head>
+  <body>
+    {% block navbar %}
+    <nav>
+      {% if not current_user.is_authenticated %}
+        <a href="{{url_for('principal.login')}}">Login</a>
+        <a href="{{url_for('usuario.cadastrar_usuario')}}">Cadastrar</a>
+      {% else %}
+        <a href="{{url_for('principal.logout')}}">Logout</a>
+        <a href="{{url_for('usuario.perfil')}}">{{current_user.username}}</a>
+      {% endif %}
+    </nav>
+    {% endblock %}
+    <div id="content">{% block content %}{% endblock %}</div>
+    <div id="footer">
+      {% block footer %}
+      Made with &hearts; and Flask
+      {% endblock %}
+    </div>
+  </body>
+</html>
