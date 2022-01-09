@@ -13,10 +13,23 @@ def lista():
     filmes = Filme.query.all()
     return render_template("lista.html.j2", filmes=filmes)
 
-@filme.route("/adicionar/")
+@filme.route("/adicionar/", methods=["GET", "POST"])
 @login_required()
 def adicionar():
-    return render_template("adicionar.html.j2")
+    if request.method == "GET":
+        return render_template("adicionar.html.j2")
+    if request.method == "POST":
+        titulo = request.form.get('titulo')
+        imdb_id = request.form.get('imdb_id')
+        diretor = request.form.get('diretor')
+        atores = request.form.get('atores')
+        if ', ' in atores:
+            atores = ','.join(atores.split(', '))
+        filme = Filme(titulo, imdb_id, diretor, atores)
+        db.session.add(filme)
+        db.session.commit()
+        flash("Filme criado com sucesso")
+        return redirect(url_for('filme.adicionar'))
 
 @filme.route("/editar/")
 @login_required()
