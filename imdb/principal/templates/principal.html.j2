@@ -1,5 +1,33 @@
 {% extends "base.html.j2" %}
 {% block title %}Index{% endblock %}
 {% block content %}
-  <h1>Bem vindo!</h1>
+  {% if current_user.is_authenticated %}
+    <h1>Bem vindo, {{usuario.username}}!</h1>
+    {% if avaliacoes %}
+      <table>
+        <thead>
+          Suas Avaliações
+        </thead>
+        <tr>
+          <th>Filme</th>
+          <th>Titulo</th>
+          <th>Estrelas</th>
+          <th>Editar</th>
+          <th>Deletar</th>
+        </tr>
+        {% for avaliacao in avaliacoes %}
+        <tr>
+          <td>{{avaliacao.filme.titulo}}</td>
+          <td>{{avaliacao.titulo}}</td>
+          <td>{{avaliacao.estrelas}}</td>
+          <td><a href="{{url_for('filme.editar_avaliacao', id_filme=avaliacao.id_filme)}}">&#9998;</a> </td>
+          <td><a href="{{url_for('filme.editar_avaliacao', id_filme=avaliacao.id_filme)}}">&#9998;</a> </td>
+        </tr>
+        {% endfor%}
+      </table>
+    {% endif %}
+  {% else %}
+    <h1>Bem vindo!</h1>
+  {% endif %}
+
 {% endblock %}

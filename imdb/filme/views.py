@@ -19,6 +19,7 @@ def lista():
         filmes += Filme.query.filter(Filme.id_imdb.like(f"%{busca}%"))
         filmes += Filme.query.filter(Filme.diretor.like(f"%{busca}%"))
         filmes += Filme.query.filter(Filme.atores.like(f"%{busca}%"))
+        filmes = set(list(filmes))
     else:
         filmes = Filme.query.all()
     return render_template("lista.html.j2", filmes=filmes)
@@ -76,15 +77,56 @@ def remover(filme_id):
 @filme.route("<id_filme>/avaliar", methods=["GET", "POST"])
 @login_required()
 def avaliar(id_filme):
+    id_usuario = current_user.id
     if request.method == "GET":
-        return render_template("avaliar.html.j2", id_filme=id_filme)
+        if len(Avaliacao.query.filter_by(id_usuario = id_usuario, id_filme=id_filme).all()) == 0:
+            return render_template("avaliar.html.j2", id_filme=id_filme)
+        else:
+            return redirect(url_for('filme.editar_avaliacao', id_filme=id_filme))
     if request.method == "POST":
+        if (len(Avaliacao.query.filter_by(id_usuario = id_usuario, id_filme=id_filme).all()) > 0):
+            flash("Você já tem uma avaliação para esse filme")
+            return redirect(url_for('filme.lista'))
         titulo = request.form.get('titulo')
         corpo = request.form.get('corpo')
         estrelas = request.form.get('estrelas')
-        id_usuario = current_user.id
         avaliacao = Avaliacao(titulo, corpo, estrelas, id_filme, id_usuario)
         db.session.add(avaliacao)
         db.session.commit()
         flash("Avaliação adicionada com sucesso")
         return redirect(url_for('filme.lista'))
+
+
+@filme.route("<id_filme>/avaliacao/editar", methods=["GET", "POST"])
+@login_required()
+def editar_avaliacao(id_filme):
+    id_usuario = current_user.id
+    avaliacao = Avaliacao.query.filter_by(id_usuario=id_usuario, id_filme=id_filme).all()[0]
+    if request.method == "GET":
+        return render_template("editar_avaliacao.html.j2", avaliacao=avaliacao)
+    if request.method == "POST":
+        avaliacao.titulo = request.form.get('titulo')
+        avaliacao.corpo = request.form.get('corpo')
+        avaliacao.estrelas = request.form.get('estrelas')
+        db.session.commit()
+        flash("Avaliação editada com sucesso")
+        return redirect(url_for('filme.lista'))
+
+
+@filme.route("<id_filme>/avaliacao")
+@login_required()
+def visualizar_avaliacao(id_filme):
+    id_usuario = current_user.id
+    avaliacao = Avaliacao.query.filter_by(id_usuario=id_usuario, id_filme=id_filme).all()[0]
+    return redirect(url_for('filme.editar_avaliacao'))
+
+
+@filme.route("<id_filme>/avaliacao/deletar")
+@login_required()
+def deletar_avaliacao(id_filme):
+    id_usuario = current_user.id
+    avaliacao = Avaliacao.query.filter_by(id_usuario=id_usuario, id_filme=id_filme).all()[0]
+    db.session.delete(avaliacao)
+    db.session.commit()
+    flash('Avaliação deletada com sucesso')
+    return redirect(url_for('principal.index'))

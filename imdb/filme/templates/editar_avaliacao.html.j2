@@ -1,0 +1,26 @@
+{% extends "base.html.j2" %}
+{% block title %}Adcionar Filme{% endblock %}
+
+{% block content %}
+  <h1>Edite sua avaliação</h1>
+  <form action="{{url_for('filme.editar_avaliacao', id_filme=avaliacao.id_filme)}}" method="POST">
+     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+     <label for="estrelas">Estrelas</label>
+     {% for i in range(5) %}
+      {% if  i+1==avaliacao.estrelas%}
+        <input type="radio" name='estrelas' value="{{i+1}}" checked/>
+      {% else %}
+        <input type="radio" name='estrelas' value="{{i+1}}"/>
+      {% endif %}
+     {% endfor %}
+     <div>
+        <label for="titulo">Titulo:</label>
+        <input type="text" name="titulo" value="{{ avaliacao.titulo }}" />
+     </div>
+     <div>
+        <label for="corpo">Corpo:</label>
+        <textarea type="text" name="corpo">{{avaliacao.corpo}}</textarea>
+     </div>
+     <input type="submit"/>
+  </form>
+{% endblock %}
