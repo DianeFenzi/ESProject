@@ -1,6 +1,7 @@
 from imdb import db, login_manager
 from flask_bcrypt import Bcrypt
 from flask_login import UserMixin
+from imdb.filme.models import Avaliacao
 
 
 #################################################
@@ -19,6 +20,7 @@ def load_user(user_id):
 class Usuario(db.Model, UserMixin):
 
    bcrypt = Bcrypt()
+#from imdb.avaliacao.models import Avaliacao
 
    __tablename__ = 'usuario'
    id = db.Column(db.Integer, primary_key=True)
@@ -27,6 +29,9 @@ class Usuario(db.Model, UserMixin):
    username = db.Column(db.String(80), unique=True, nullable=False)
    senha = db.Column(db.String(255),nullable = False)
    funcao = db.Column(db.String(50), server_default="user", nullable=False) #admin ou normal
+
+
+   avaliacoes = db.relationship(Avaliacao, backref='usuario', lazy= True)
 
 
    def __init__(self, email, senha, username, funcao):

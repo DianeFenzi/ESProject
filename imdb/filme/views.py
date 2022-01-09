@@ -1,6 +1,8 @@
 from flask import Blueprint, request, url_for, redirect, render_template, flash
+from flask_login import current_user
 from imdb import db, login_required, admin_required
-from imdb.filme.models import Filme
+from imdb.filme.models import Filme, Avaliacao
+
 
 filme = Blueprint('filme', __name__, template_folder='templates')
 
@@ -66,3 +68,23 @@ def remover(filme_id):
     db.session.commit()
     flash("Filme removido com sucesso")
     return redirect(url_for('filme.lista'))
+
+
+################################################
+
+
+@filme.route("<id_filme>/avaliar", methods=["GET", "POST"])
+@login_required()
+def avaliar(id_filme):
+    if request.method == "GET":
+        return render_template("avaliar.html.j2", id_filme=id_filme)
+    if request.method == "POST":
+        titulo = request.form.get('titulo')
+        corpo = request.form.get('corpo')
+        estrelas = request.form.get('estrelas')
+        id_usuario = current_user.id
+        avaliacao = Avaliacao(titulo, corpo, estrelas, id_filme, id_usuario)
+        db.session.add(avaliacao)
+        db.session.commit()
+        flash("Avaliação adicionada com sucesso")
+        return redirect(url_for('filme.lista'))

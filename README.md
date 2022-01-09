@@ -40,7 +40,7 @@ Histórias de Usuário:
     - Mostrar tela para editar com as infos do filme.
 - Como um administrador, quero deletar um filme. (Rafael) OK.
     - Aparecer um modal para confirmar a ação.
-- Como um usuário, quero avaliar um filme. (Rafael)
+- Como um usuário, quero avaliar um filme. (Rafael) OK.
     - Cadastrar a Classe de Avaliação
     - Ver a página do filme.
     - Enviar comentário e nota.

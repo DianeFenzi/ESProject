@@ -13,10 +13,13 @@
   <tr>
     <th>Titulo</th>
     <th>Diretor</th>
-    <th>Avaliação</th>
-    {% if current_user.is_authenticated and current_user.funcao == "admin" %}
+    <th>Pontuação</th>
+    {% if current_user.is_authenticated %}
+    <th>Avaliar</th>
+      {% if current_user.funcao == "admin" %}
       <th>Editar</a></th>
       <th>Deletar</th>
+      {% endif %}
     {% endif %}
   </tr>
   {% if filmes.size == 0 %}
@@ -28,10 +31,13 @@
     <tr>
       <td>{{filme.titulo}}</td>
       <td>{{filme.diretor}}</td>
-      <td>5</td>
-      {% if current_user.is_authenticated and current_user.funcao == "admin" %}
+      <td>{{filme.media_avaliacao()|round(1)}}</td>
+      {% if current_user.is_authenticated %}
+      <td><a href="{{url_for('filme.avaliar', id_filme=filme.id)}}">&star;</a> </td>
+      {% if current_user.funcao == "admin" %}
       <td><a href="{{url_for('filme.editar', filme_id=filme.id)}}">&#9998;</a></td>
       <td><a href="{{url_for('filme.remover', filme_id=filme.id)}}">&#10005;</a></td>
+      {% endif %}
       {% endif %}
     </tr>
   {% endfor%}
