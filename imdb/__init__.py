@@ -5,7 +5,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from functools import wraps
 
-
 login_manager = LoginManager()
 
 app = Flask(__name__, static_url_path="/static")

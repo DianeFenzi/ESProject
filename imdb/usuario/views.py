@@ -16,7 +16,7 @@ def cadastrar_usuario():
       db.session.add(usuario)
       db.session.commit()
       return redirect(url_for('principal.index'))
-   return render_template('cadastrar_usuario.html')
+   return render_template('cadastrar_usuario.html.j2')
 
 @usuario.route("/perfil", methods=["GET"])
 @login_required()

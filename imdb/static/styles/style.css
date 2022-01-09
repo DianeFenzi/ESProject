@@ -3,6 +3,6 @@
 p {margin-left: 2px;}
 #footer {align-self: flex-end;}
 body {min-height: inherit;}
-table {align-content: center}
+tr {text-align: center;}
 th {background-color: #c0c0c0;}
 * {border-radius: 15px;}

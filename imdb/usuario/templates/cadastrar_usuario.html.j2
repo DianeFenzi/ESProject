@@ -1,0 +1,22 @@
+{% extends "base.html.j2" %}
+{% block title %}Cadastre-se{% endblock %}
+
+{% block content %}
+  <h1>Cadastre o seu usuário!</h1>
+  <form action="{{url_for('usuario.cadastrar_usuario')}}" method="POST">
+     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+     <div>
+        <label for="email">Email:</label>
+        <input type="email" name="email">
+     </div>
+     <div>
+        <label for="username">Username:</label>
+        <input type="text" name="username">
+     </div>
+     <div>
+        <label for="senha">Senha:</label>
+        <input type="password" name="senha">
+     </div>
+     <input type="submit">
+  </form>
+{% endblock %}

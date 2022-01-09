@@ -8,11 +8,20 @@
     <th>Diretor</th>
     <th>Avaliação</th>
   </tr>
+  {% if filmes.size == 0 %}
+    <tr>
+      Nenhum Filme Disponivel
+    </tr>
+  {% endif %}
   {% for filme in filmes %}
     <tr>
       <td>{{filme.titulo}}</td>
       <td>{{filme.diretor}}</td>
       <td>5</td>
+      {% if current_user.is_authenticated and current_user.funcao == "admin" %}
+      <td><a href="{{url_for('filme.editar', filme_id=filme.id)}}">&#9998;</a></td>
+      <td><a href="{{url_for('filme.remover', filme_id=filme.id)}}">&#10005;</a></td>
+      {% endif %}
     </tr>
   {% endfor%}
 </table>
