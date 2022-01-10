@@ -17,7 +17,8 @@ nav a{
   padding: 10px;
   margin: 0px;
   float: left;
-  background-color: #e0e0e0;
+  background-color: purple;
+  color: red;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -27,11 +28,22 @@ nav a:nth-child(n+2){
   border-radius: 0;
   border-left-width: 2px;
 }
+
+nav a:first-child{
+  border-left: 0px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
 nav a:last-child {
   border-right: 0px;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
+nav a:hover {
+  background-color: blue;
+  color: pink;
+}
+
 html, body {
     height: 100%;
     display: flex;
@@ -39,6 +51,7 @@ html, body {
 }
 #content {
   height: 100%;
+  padding: 10px;
 }
 tr {text-align: center;}
 th {background-color: #c0c0c0;}
