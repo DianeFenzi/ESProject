@@ -11,7 +11,7 @@ class Filme(db.Model):
    id_imdb = db.Column(db.String(7), unique=True, nullable=False)
    atores = db.Column(db.String(1000), nullable=False)
    diretor = db.Column(db.String(160), nullable=False)
-   avaliacoes = db.relationship('Avaliacao', backref='filme', lazy= True)
+   avaliacoes = db.relationship('Avaliacao', cascade="all,delete", backref='filme', lazy= True)
 
    def __init__(self, titulo, id_imdb, diretor, atores):
       if type(atores) == list:

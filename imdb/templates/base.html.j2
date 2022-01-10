@@ -9,21 +9,23 @@
   </head>
   <body>
     {% block navbar %}
-    <nav>
-      <a href="{{url_for('principal.index')}}">Inicio</a>
-      <a href="{{url_for('filme.lista')}}">Filmes</a>
-      {% if not current_user.is_authenticated %}
-        <a href="{{url_for('principal.login')}}">Login</a>
-        <a href="{{url_for('usuario.cadastrar_usuario')}}">Cadastrar</a>
-      {% else %}
-        <a href="{{url_for('usuario.perfil')}}">{{current_user.username}}</a>
-        <a href="{{url_for('principal.logout')}}">Logout</a>
-      {% endif %}
-      {% if current_user.funcao == "admin" %}
-        <a href="{{url_for('filme.adicionar')}}">Adicionar Filme</a>
-      {% endif %}
-    </nav>
+      <nav>
+        <a href="{{url_for('principal.index')}}">Inicio</a>
 
+        <a href="{{url_for('filme.lista')}}">Filmes</a>
+        {% if not current_user.is_authenticated %}
+          <a href="{{url_for('principal.login')}}">Login</a>
+          <a href="{{url_for('usuario.cadastrar_usuario')}}">Cadastrar</a>
+        {% else %}
+          <a href="{{url_for('usuario.perfil')}}">{{current_user.username}}</a>
+          <a href="{{url_for('principal.logout')}}">Logout</a>
+        {% endif %}
+        {% if current_user.funcao == "admin" %}
+          <a href="{{url_for('filme.adicionar')}}">Adicionar Filme</a>
+        {% endif %}
+
+      </nav>
+    {% endblock %}
     <!-- Flashed Messages Start -->
     {% with messages = get_flashed_messages() %}
     {% if messages %}
@@ -35,7 +37,6 @@
     {% endif %}
     {% endwith %}
 
-    {% endblock %}
     <div id="content">{% block content %}{% endblock %}</div>
     <div id="footer">
       {% block footer %}
