@@ -29,7 +29,7 @@
   {% endif %}
   {% for filme in filmes %}
     <tr>
-      <td>{{filme.titulo}}</td>
+      <td><a href="{{url_for('filme.visualizar', id_filme=filme.id)}}">{{filme.titulo}}</a></td>
       <td>{{filme.diretor}}</td>
       <td>{{filme.media_avaliacao()|round(1)}}</td>
       {% if current_user.is_authenticated %}

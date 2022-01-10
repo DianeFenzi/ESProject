@@ -24,6 +24,11 @@ def lista():
         filmes = Filme.query.all()
     return render_template("lista.html.j2", filmes=filmes)
 
+@filme.route("/<id_filme>/")
+def visualizar(id_filme):
+    filme = Filme.query.get_or_404(id_filme)
+    return render_template("visualizar.html.j2", filme=filme)
+
 @filme.route("/adicionar/", methods=["GET", "POST"])
 @admin_required()
 def adicionar():
