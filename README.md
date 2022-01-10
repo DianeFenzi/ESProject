@@ -28,7 +28,7 @@ Histórias de Usuário:
     - Fazer uma Tela de Login.
     - Verificar o Email e Senha.
     - Deixar o Usuário Logado.
-- Como um administrador, quero cadastrar um novo filme.(Diane)
+- Como um administrador, quero cadastrar um novo filme.(Diane) OK.
     - Fazer uma tela para cadastro.
     - Verificar se é um administrador fazendo aquela ação.
     - Fazer a classe Filme.
@@ -45,8 +45,8 @@ Histórias de Usuário:
     - Ver a página do filme.
     - Enviar comentário e nota.
     - Proibir comentário de não-logados.
-- Como um usuário da Web, quero encontrar um filme.(Diane)
-    - Página dos gêneros.
+- Como um usuário da Web, quero encontrar um filme.(Diane) OK.
+    - Página dos gêneros. (Não há)
     - Fazer uma busca.
 - Como um usuário da Web, quero visualizar um filme. (Diane)
     - Fazer página de Visualização do filme
