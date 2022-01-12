@@ -10,4 +10,11 @@
     {% for ator in filme.atores.split(',')%}
     <li>{{ator}}</li>
     {% endfor%}
+  </ul>
+  <p>Avaliações: </p>
+  <ul>
+    {% for comentario in comentarios %}
+    <li>{{comentario.titulo}} <a>&star;</a> {{comentario.estrelas}}: {{comentario.corpo}}</li>
+    {% endfor%}
+  </ul>
 {% endblock %}

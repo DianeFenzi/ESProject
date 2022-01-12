@@ -46,7 +46,7 @@ Histórias de Usuário:
     - Enviar comentário e nota.
     - Proibir comentário de não-logados.
 - Como um usuário da Web, quero encontrar um filme.(Diane) OK.
-    - Página dos gêneros. (Não há)
+    - Página dos gêneros. (Não ok)
     - Fazer uma busca.
 - Como um usuário da Web, quero visualizar um filme. (Diane)
     - Fazer página de Visualização do filme
