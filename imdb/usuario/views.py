@@ -1,4 +1,4 @@
-from flask import Blueprint, request, url_for, redirect, render_template
+from flask import Blueprint, request, url_for, redirect, render_template, flash
 from imdb import db, login_required
 from imdb.usuario.models import Usuario
 
@@ -7,6 +7,14 @@ usuario = Blueprint('usuario', __name__, template_folder='templates')
 @usuario.route("/cadastrar_usuario", methods=["GET","POST"])
 def cadastrar_usuario():
    if request.method == "POST":
+      usuario_existe = Usuario.query.filter(Usuario.email==request.form["email"]).first()
+      if usuario_existe:
+         flash("Email já cadastrado.")
+         return redirect(url_for('usuario.cadastrar_usuario'))
+      username_existe = Usuario.query.filter(Usuario.username==request.form["username"]).first()
+      if username_existe:
+         flash("Username já em uso.")
+         return redirect(url_for('usuario.cadastrar_usuario'))
       usuario = Usuario(
          email=request.form["email"],
          senha=request.form["senha"],
