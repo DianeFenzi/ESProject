@@ -13,12 +13,19 @@ principal = Blueprint('principal', __name__, template_folder='templates')
 @principal.route("/")
 def index():
    usuario = current_user
+   numero_de_filmes = Filme.query.count()
+   numero_de_avaliacoes = Avaliacao.query.count()
    if usuario.is_authenticated:
        # for avaliacao in usuario.avaliacoes:
            # avaliacao.filme_titulo
-       return render_template("principal.html.j2", usuario=usuario, avaliacoes=usuario.avaliacoes)
+       return render_template("principal.html.j2", usuario=usuario,
+        avaliacoes=usuario.avaliacoes, 
+        numero_de_filmes=numero_de_filmes,
+        numero_de_avaliacoes=numero_de_avaliacoes)
    else:
-       return render_template("principal.html.j2", avalicoes=[])
+       return render_template("principal.html.j2", avalicoes=[],
+       numero_de_filmes=numero_de_filmes,
+       numero_de_avaliacoes=numero_de_avaliacoes)
 
 @principal.route("/login", methods=["GET","POST"])
 def login():
