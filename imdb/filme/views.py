@@ -13,6 +13,7 @@ filme = Blueprint('filme', __name__, template_folder='templates')
 @filme.route("/", methods=["GET", "POST"])
 def lista():
     filmes = []
+    busca = False
     if request.method == "POST":
         busca = request.form.get("busca")
         filmes += Filme.query.filter(Filme.titulo.like(f"%{busca}%"))
@@ -22,7 +23,7 @@ def lista():
         filmes = set(list(filmes))
     else:
         filmes = Filme.query.all()
-    return render_template("lista.html.j2", filmes=filmes)
+    return render_template("lista.html.j2", filmes=filmes, busca=busca)
 
 @filme.route("/<id_filme>/")
 def visualizar(id_filme):

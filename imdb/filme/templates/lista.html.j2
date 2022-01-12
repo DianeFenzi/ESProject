@@ -2,13 +2,18 @@
 {% block title %}Filmes{% endblock %}
 
 {% block content %}
-<form action="{{url_for('filme.lista')}}" method="POST">
+<p>Use o campo abaixo para procurar por filmes, seja por nome, diretor ou atores...</p>
+<form action="{{url_for('filme.lista')}}" method="POST" id="form1">
    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
    <div>
       <label for="busca">Filtrar</label>
       <input type="text" name="busca"/>
+      <button type="submit" form="form1" value="submit">Enviar</button>
    </div>
 </form>
+{% if busca %}
+  <a href="{{url_for('filme.lista')}}">Limpar filtro</a>
+{% endif %}
 <table>
   <tr>
     <th>Titulo</th>
