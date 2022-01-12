@@ -33,8 +33,9 @@
   {% else %}
     <h1>Seja bem vindo!</h1>
     <h2>
-      Esse é o clone do IMDb, onde você pode acessar informações e notas sobre diversos filmes do mundo!
-      Para avaliar filmes, crie uma conta ou faça o login!
+      Esse é o clone do IMDb, onde você pode acessar informações e notas de diversos filmes do mundo!
+      Para avaliar filmes, <a href="{{url_for('usuario.cadastrar_usuario')}}">crie uma conta</a> 
+      ou faça <a href="{{url_for('principal.login')}}">login</a>
     </h2>
     <h3>Temos, atualmente, {{numero_de_filmes}} filmes cadastrados e {{numero_de_avaliacoes}} avaliações.</h3>
   {% endif %}
