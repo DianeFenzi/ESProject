@@ -1,8 +1,8 @@
 {% extends "base.html.j2" %}
-{% block title %}Adcionar Filme{% endblock %}
+{% block title %}Adicionar Filme{% endblock %}
 
 {% block content %}
-  <h1>Adcione o filme</h1>
+  <h1>Adicione o filme</h1>
   <form action="{{url_for('filme.adicionar')}}" method="POST">
      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
      <div>
