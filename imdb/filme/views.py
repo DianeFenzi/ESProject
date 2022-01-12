@@ -44,7 +44,7 @@ def adicionar():
         filme = Filme(titulo, imdb_id, diretor, atores)
         db.session.add(filme)
         db.session.commit()
-        flash("Filme criado com sucesso")
+        flash("Filme adicionado com sucesso")
         return redirect(url_for('filme.adicionar'))
 
 @filme.route("/editar/<filme_id>", methods=["GET", "POST"])
