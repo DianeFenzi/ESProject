@@ -23,7 +23,7 @@ def index():
 @principal.route("/login", methods=["GET","POST"])
 def login():
    if current_user.is_authenticated:
-      flash("Usuário já logado.")
+      flash("Usuário já se encontra logado.")
       return redirect(url_for('principal.index'))
 
    if request.method == 'POST':
@@ -40,12 +40,12 @@ def login():
          if (checaSenha):
                login_user(usuario)
                print(current_user.funcao)
-               flash("Usuário logado com sucesso!")
+               flash("Usuário foi logado com sucesso!")
                return redirect(url_for('principal.index'))
          else:
-               flash("Senha inválida")
+               flash("A senha é inválida")
       else:
-         flash('Usuário inválido')
+         flash('O usuário é inválido')
          return redirect(url_for('principal.login'))
 
    return render_template('login.html.j2')
@@ -55,7 +55,7 @@ def login():
 def logout():
    if (current_user):
       logout_user()
-      flash("Logout feito com sucesso!")
+      flash(" O logout foi feito com sucesso!")
    else:
-      flash("Você precisa estar logado para deslogar")
+      flash("Você deve estar logado para deslogar!")
    return redirect(url_for('principal.login'))
